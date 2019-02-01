@@ -1,0 +1,97 @@
+﻿<!--In JP Students Index view, removed 'details' link and swapped 'Edit' and 'Delete links for embedded string icons-->
+
+
+<td class="font20 align-middle" id="JPStudentsTable">
+
+    @Html.ActionLink(HttpUtility.HtmlDecode("&#x270E;"), "Edit", new { id = item.JPStudentId }) |
+    @Html.ActionLink(HttpUtility.HtmlDecode("&#x1F5D1;"), "Delete", new { id = item.JPStudentId })
+
+</td>
+
+
+<!--In JPCurrentJobs Create view, made the 'Back to List' link into a button and placed button inline with the 'create' button-->
+
+
+<input type="button" class="btn btn-default" id="hires-button-right" value="Back to List" onclick="location.href='@Url.Action("Index", "JPCurrentJobs")'" />
+
+
+<!--In Networking view, replace 'Create New' link with an orange plus sign that displays inline with the other icons-->
+
+<p class="createnewplus">
+    @Html.ActionLink(HttpUtility.HtmlDecode("&#x2b;"), "Create")
+</p>
+
+<!--In Snapshot view, change table headers to the same grey color found in the other views-->
+
+<th></th>
+<th class="auto-style3 table-headersgray">
+    Name
+</th>
+@*<th class="auto-style2 table-headersgray">
+        Last Name
+    </th>*@
+<th class="auto-style2 table-headersgray">
+    Student Location
+</th>
+<th class="auto-style2 table-headersgray">
+    Job Title
+</th>
+<th class="auto-style2 table-headersgray">
+    Company Name
+</th>
+<th class="auto-style2 table-headersgray">
+    Hire Date
+</th>
+<th></th>
+
+.table-headersgray {
+color:#777;
+letter-spacing: 1px;
+}
+
+
+<!--In the Networking view, make sure the LinkedIn and Email table headers are the same font as the other headers-->
+
+<th class="sort-button-style table-headers fixed">
+    <a onclick="sortPartial('@ViewBag.NameSortParm')">Name</a>
+</th>
+<th class="sort-button-style table-headers fixed">
+    <a onclick="sortPartial('@ViewBag.PositionSortParm')"> Position</a>
+</th>
+<th class="sort-button-style table-headers fixed ">
+    <a onclick="sortPartial('@ViewBag.CompanySortParm')">Company</a>
+</th>
+<th class="sort-button-style table-headers fixed">
+    <label class="network-label networkingheader">LinkedIn</label>
+</th>
+<th class="sort-button-style table-headers fixed">
+    <a onclick="sortPartial('@ViewBag.LocationSortParm')">Location</a>
+</th>
+<th class="sort-button-style table-headers fixed">
+    <label class="network-label networkingheader">Email</label>
+</th>
+<th class="sort-button-style table-headers fixed">
+    <a onclick="sortPartial('@ViewBag.StackSortParm')">Stack</a>
+</th>
+
+.table-headers.fixed a {
+color:#777;
+font-family: 'Oswald', sans-serif;
+letter-spacing: 1px;
+}
+
+
+<!--In the Update view of JPNotifications, edited the table headers to make sure font is the same as JPStudentRundown index table-->
+
+<th class="table-headers fixed text-left">
+    @Html.ActionLink("Name", "Update")
+</th>
+<th class="table-headers fixed">
+    @Html.ActionLink("Graduate", "Update", new { sortOrder = ViewBag.GraduateSortParm, currentFilter = ViewBag.CurrentFilter })
+</th>
+<th class="table-headers fixed">
+    @Html.ActionLink("Hire", "Update", new { sortOrder = ViewBag.HireSortParm, currentFilter = ViewBag.CurrentFilter })
+</th>
+<th class="table-headers fixed">
+    @Html.ActionLink("Notification Date", "Update", new { sortOrder = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter })
+</th>
